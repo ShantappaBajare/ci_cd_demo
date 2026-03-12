@@ -40,22 +40,29 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 import os
 
+ENV = os.environ.get("ENV", "local")
+IS_CI = ENV.lower() == "ci"
+
+
 def create_driver():
     options = webdriver.ChromeOptions()
 
-    # ---------------- Local + CI options ----------------
-    # Start maximized only for local GUI
-    if os.environ.get("CI") != "true":
-        options.add_argument("--start-maximized")
+    if IS_CI:
+        # CI / Docker safe flags
+        options.add_argument("--headless=new")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--window-size=1920,1080")
     else:
-        # Headless mode for CI / Docker
-        options.add_argument("--headless=new")          # new headless mode
-        options.add_argument("--no-sandbox")            # required in Docker
-        options.add_argument("--disable-dev-shm-usage") # prevents /dev/shm crashes
-        options.add_argument("--window-size=1920,1080") # ensures proper layout for screenshots
+        # Local flags
+        options.add_argument("--start-maximized")
 
-    # ---------------- Notifications & Password ----------------
+    # Common flags
     options.add_argument("--disable-notifications")
+    options.add_argument("--disable-extensions")
+    options.add_argument("--disable-popup-blocking")
+    options.add_argument("--disable-infobars")
+
     prefs = {
         "credentials_enable_service": False,
         "profile.password_manager_enabled": False,
@@ -63,18 +70,9 @@ def create_driver():
     }
     options.add_experimental_option("prefs", prefs)
 
-    # ---------------- Extra stability ----------------
-    options.add_argument("--disable-infobars")
-    options.add_argument("--disable-extensions")
-    options.add_argument("--disable-popup-blocking")
-    options.add_argument("--disable-gpu")  # optional, works well in CI
-
-    # ---------------- Create driver ----------------
     driver = webdriver.Chrome(
         service=Service(ChromeDriverManager().install()),
         options=options
     )
-
     driver.implicitly_wait(10)
-
     return driver

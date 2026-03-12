@@ -39,5 +39,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . /app
 WORKDIR /app
 
+# 6️⃣ Set CI environment variable
+ENV ENV=ci
+
 # Default command
 CMD ["pytest"]

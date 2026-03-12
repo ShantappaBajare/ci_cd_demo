@@ -2,8 +2,13 @@ import pytest
 from datetime import datetime
 import os
 from utils.driver_factory import create_driver
-from utils.screenshots import take_screenshot
 from utils.logger import get_logger
+
+# --------------------------
+# Environment Setup
+# --------------------------
+ENV = os.environ.get("ENV", "local")  # local or ci
+IS_CI = ENV.lower() == "ci"
 
 # --------------------------
 # Timestamp per test run
@@ -21,7 +26,7 @@ os.makedirs(SCREENSHOT_DIR, exist_ok=True)
 os.makedirs(REPORT_DIR, exist_ok=True)
 
 # --------------------------
-# Logger fixture
+# Logger Fixture
 # --------------------------
 @pytest.fixture(scope="session")
 def logger():
@@ -29,7 +34,7 @@ def logger():
     return get_logger(log_file)
 
 # --------------------------
-# Driver fixture
+# WebDriver Fixture
 # --------------------------
 @pytest.fixture(scope="function")
 def driver():
@@ -38,7 +43,7 @@ def driver():
     driver.quit()
 
 # --------------------------
-# Screenshot on failure
+# Screenshot on Failure
 # --------------------------
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
 def pytest_runtest_makereport(item, call):
@@ -53,7 +58,7 @@ def pytest_runtest_makereport(item, call):
             driver.save_screenshot(screenshot_file)
 
 # --------------------------
-# Timestamped HTML report
+# HTML Report Path
 # --------------------------
 def pytest_sessionstart(session):
     if session.config.pluginmanager.hasplugin("html"):
