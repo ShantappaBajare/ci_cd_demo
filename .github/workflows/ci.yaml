@@ -45,21 +45,21 @@ jobs:
 
       # Step 6: Upload test reports
       - name: Upload Test Reports
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: test-reports
           path: ${{ github.workspace }}/$REPORTS_DIR
 
       # Step 7: Upload screenshots
       - name: Upload Screenshots
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: screenshots
           path: ${{ github.workspace }}/$SCREENSHOTS_DIR
 
       # Step 8: Upload logs
       - name: Upload Logs
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: logs
           path: ${{ github.workspace }}/$LOGS_DIR
