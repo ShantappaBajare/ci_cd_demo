@@ -1,0 +1,8 @@
+2026-03-12 13:10:20,337 - INFO - TestRun_20260312_131018 - Navigating to base URL: https://www.saucedemo.com
+2026-03-12 13:10:21,366 - INFO - TestRun_20260312_131018 - Logging in with valid username: standard_user
+2026-03-12 13:10:21,780 - INFO - TestRun_20260312_131018 - Current URL after login: https://www.saucedemo.com/inventory.html
+2026-03-12 13:10:21,780 - INFO - TestRun_20260312_131018 - Valid login test passed ✅
+2026-03-12 13:10:24,071 - INFO - TestRun_20260312_131018 - Navigating to base URL: https://www.saucedemo.com
+2026-03-12 13:10:25,129 - INFO - TestRun_20260312_131018 - Attempting login with invalid credentials
+2026-03-12 13:10:25,546 - INFO - TestRun_20260312_131018 - Error message received: Epic sadface: Username and password do not match any user in this service
+2026-03-12 13:10:25,546 - INFO - TestRun_20260312_131018 - Invalid login test passed ✅
