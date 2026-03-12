@@ -3,7 +3,7 @@ import os
 
 ENV = os.environ.get("ENV", "local")  # "local" or "ci"
 
-config_file = "config_local.json" if ENV.lower() == "local" else "config_ci.json"
+config_file = "config_local.json" if ENV.lower() == "local" else "config_local.json"
 
 config_path = os.path.join(
     os.path.dirname(__file__),
