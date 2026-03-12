@@ -11,6 +11,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
+      CI: "true"                # <-- added for headless Chrome detection
       REPORTS_DIR: reports
       LOGS_DIR: logs
       SCREENSHOTS_DIR: screenshots
@@ -34,7 +35,7 @@ jobs:
       - name: Build Docker image
         run: docker build -t my-framework:latest .
 
-      # Step 5: Run tests in Docker
+      # Step 5: Run tests inside Docker
       - name: Run tests inside Docker
         run: |
           docker run --rm \
