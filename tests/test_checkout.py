@@ -35,11 +35,7 @@ def test_complete_checkout(driver, logger):
 
     checkout_page = CheckoutPage(driver)
     logger.info("Filling checkout information")
-    checkout_page.fill_checkout_info(
-        first_name="Shantappa",
-        last_name="Bajare",
-        postal_code="585102"
-    )
+    checkout_page.fill_checkout_info("Shantappa", "Bajare", "585102")
 
     logger.info("Finishing order")
     checkout_page.finish_order()
