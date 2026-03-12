@@ -1,0 +1,9 @@
+# Ignore generated content
+reports/*
+logs/*
+screenshots/*
+
+# Keep folders in Git
+!reports/.gitkeep
+!logs/.gitkeep
+!screenshots/.gitkeep
