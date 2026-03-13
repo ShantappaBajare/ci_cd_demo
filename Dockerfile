@@ -1,6 +1,6 @@
 FROM python:3.11-slim
 
-# 1️⃣ Install dependencies
+# 1️⃣ Install system dependencies required for Chrome
 RUN apt-get update && apt-get install -y \
     wget \
     unzip \
@@ -20,27 +20,29 @@ RUN apt-get update && apt-get install -y \
     libgbm1 \
     apt-transport-https \
     ca-certificates \
-    --no-install-recommends && \
-    rm -rf /var/lib/apt/lists/*
+    --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/*
 
-# 2️⃣ Add Google Chrome official repo
-RUN curl -fsSL https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor > /usr/share/keyrings/google-linux-keyring.gpg && \
+# 2️⃣ Add Google Chrome repo
+RUN curl -fsSL https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor \
+    > /usr/share/keyrings/google-linux-keyring.gpg && \
     echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-linux-keyring.gpg] http://dl.google.com/linux/chrome/deb/ stable main" \
     > /etc/apt/sources.list.d/google-chrome.list
 
-# 3️⃣ Install Chrome from repo
-RUN apt-get update && apt-get install -y google-chrome-stable && rm -rf /var/lib/apt/lists/*
+# 3️⃣ Install Chrome
+RUN apt-get update && apt-get install -y google-chrome-stable \
+    && rm -rf /var/lib/apt/lists/*
 
 # 4️⃣ Install Python dependencies
+WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 5️⃣ Copy project code
-COPY . /app
-WORKDIR /app
+# 5️⃣ Copy framework code
+COPY . .
 
-# 6️⃣ Set CI environment variable
+# 6️⃣ CI environment variable
 ENV ENV=ci
 
-# Default command
-CMD ["pytest"]
+# 7️⃣ Default command
+CMD ["pytest", "-v"]

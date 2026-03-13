@@ -1,0 +1,18 @@
+2026-03-12 17:16:40,859 - INFO - /Users/macbookpro/PycharmProjects/ci_cd_demo/TestRun_20260312_171620/logs/logs_20260312_171620.log - Navigating to base URL: https://www.saucedemo.com
+2026-03-12 17:16:41,673 - INFO - /Users/macbookpro/PycharmProjects/ci_cd_demo/TestRun_20260312_171620/logs/logs_20260312_171620.log - Logging in with username: standard_user
+2026-03-12 17:16:42,082 - INFO - /Users/macbookpro/PycharmProjects/ci_cd_demo/TestRun_20260312_171620/logs/logs_20260312_171620.log - Login successful
+2026-03-12 17:16:42,083 - INFO - /Users/macbookpro/PycharmProjects/ci_cd_demo/TestRun_20260312_171620/logs/logs_20260312_171620.log - Adding backpack to cart
+2026-03-12 17:16:42,214 - INFO - /Users/macbookpro/PycharmProjects/ci_cd_demo/TestRun_20260312_171620/logs/logs_20260312_171620.log - Navigated to cart page
+2026-03-12 17:16:42,214 - INFO - /Users/macbookpro/PycharmProjects/ci_cd_demo/TestRun_20260312_171620/logs/logs_20260312_171620.log - Initiating checkout
+2026-03-12 17:16:42,274 - INFO - /Users/macbookpro/PycharmProjects/ci_cd_demo/TestRun_20260312_171620/logs/logs_20260312_171620.log - Filling checkout information
+2026-03-12 17:16:42,578 - INFO - /Users/macbookpro/PycharmProjects/ci_cd_demo/TestRun_20260312_171620/logs/logs_20260312_171620.log - Finishing order
+2026-03-12 17:16:42,666 - INFO - /Users/macbookpro/PycharmProjects/ci_cd_demo/TestRun_20260312_171620/logs/logs_20260312_171620.log - Checkout success message received: Thank you for your order!
+2026-03-12 17:16:42,667 - INFO - /Users/macbookpro/PycharmProjects/ci_cd_demo/TestRun_20260312_171620/logs/logs_20260312_171620.log - Complete checkout test passed ✅
+2026-03-12 17:16:45,046 - INFO - /Users/macbookpro/PycharmProjects/ci_cd_demo/TestRun_20260312_171620/logs/logs_20260312_171620.log - Navigating to base URL: https://www.saucedemo.com
+2026-03-12 17:16:46,070 - INFO - /Users/macbookpro/PycharmProjects/ci_cd_demo/TestRun_20260312_171620/logs/logs_20260312_171620.log - Logging in with valid username: standard_user
+2026-03-12 17:16:46,478 - INFO - /Users/macbookpro/PycharmProjects/ci_cd_demo/TestRun_20260312_171620/logs/logs_20260312_171620.log - Current URL after login: https://www.saucedemo.com/inventory.html
+2026-03-12 17:16:46,478 - INFO - /Users/macbookpro/PycharmProjects/ci_cd_demo/TestRun_20260312_171620/logs/logs_20260312_171620.log - Valid login test passed ✅
+2026-03-12 17:16:48,819 - INFO - /Users/macbookpro/PycharmProjects/ci_cd_demo/TestRun_20260312_171620/logs/logs_20260312_171620.log - Navigating to base URL: https://www.saucedemo.com
+2026-03-12 17:16:49,904 - INFO - /Users/macbookpro/PycharmProjects/ci_cd_demo/TestRun_20260312_171620/logs/logs_20260312_171620.log - Attempting login with invalid credentials
+2026-03-12 17:16:50,326 - INFO - /Users/macbookpro/PycharmProjects/ci_cd_demo/TestRun_20260312_171620/logs/logs_20260312_171620.log - Error message received: Epic sadface: Username and password do not match any user in this service
+2026-03-12 17:16:50,326 - INFO - /Users/macbookpro/PycharmProjects/ci_cd_demo/TestRun_20260312_171620/logs/logs_20260312_171620.log - Invalid login test passed ✅

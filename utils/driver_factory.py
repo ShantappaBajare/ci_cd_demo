@@ -40,7 +40,11 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 import os
 
+#passes the environment variable from system env variables
+#if not present then "local" will be passed as env parameter
 ENV = os.environ.get("ENV", "local")
+
+#in docker file we will pass this variable as ENV ENV=ci
 IS_CI = ENV.lower() == "ci"
 
 
@@ -49,19 +53,19 @@ def create_driver():
 
     if IS_CI:
         # CI / Docker safe flags
-        options.add_argument("--headless=new")
-        options.add_argument("--no-sandbox")
-        options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--headless=new") # to run new headless mode engine faster
+        options.add_argument("--no-sandbox") # don't run security check bec browser will crash due to no support
+        options.add_argument("--disable-dev-shm-usage") # disable shared mem on lin bec less 64mb
         options.add_argument("--window-size=1920,1080")
     else:
         # Local flags
         options.add_argument("--start-maximized")
 
     # Common flags
-    options.add_argument("--disable-notifications")
-    options.add_argument("--disable-extensions")
-    options.add_argument("--disable-popup-blocking")
-    options.add_argument("--disable-infobars")
+    options.add_argument("--disable-notifications") #Allow notifications
+    options.add_argument("--disable-extensions") #google password manager to save or update password
+    options.add_argument("--disable-popup-blocking") # download,payment windows blocking
+    options.add_argument("--disable-infobars") # cheome is controlled by automated software
 
     prefs = {
         "credentials_enable_service": False,
@@ -74,5 +78,5 @@ def create_driver():
         service=Service(ChromeDriverManager().install()),
         options=options
     )
-    driver.implicitly_wait(10)
+    driver.implicitly_wait(1)
     return driver
